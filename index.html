@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html data-theme="coffee" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="./download.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cu - Rizz</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Array of available themes
+      const themes = [
+        "light",
+        "dark",
+        "cupcake",
+        "bumblebee",
+        "emerald",
+        "corporate",
+        "synthwave",
+        "retro",
+        "cyberpunk",
+        "valentine",
+        "halloween",
+        "garden",
+        "forest",
+        "aqua",
+        "lofi",
+        "pastel",
+        "fantasy",
+        "wireframe",
+        "black",
+        "luxury",
+        "dracula",
+        "cmyk",
+        "autumn",
+        "business",
+        "acid",
+        "lemonade",
+        "night",
+        "coffee",
+        "winter",
+      ];
+  
+      // Function to fetch the current date from an API
+      const fetchCurrentDate = async () => {
+        try {
+          const response = await fetch("http://worldclockapi.com/api/json/utc/now");
+          const data = await response.json();
+          const currentDate = new Date(data.currentDateTime);
+  
+          // Log the current time
+          console.log("Current Time:", currentDate.toTimeString());
+  
+          return currentDate;
+        } catch (error) {
+          console.error("Error fetching current date:", error);
+          return new Date(); // Use the local date as a fallback
+        }
+      };
+  
+      // Calculate an index based on the current date to select a theme
+      const currentDate = await fetchCurrentDate();
+      const themeIndex = currentDate.getDate() % themes.length;
+      const selectedTheme = themes[themeIndex];
+  
+      // Set the data-theme attribute of the HTML element
+      document.documentElement.setAttribute("data-theme", selectedTheme);
+    </script>
+  </body>
+</html>
