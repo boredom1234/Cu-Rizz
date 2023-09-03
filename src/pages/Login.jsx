@@ -31,7 +31,7 @@ const Login = () => {
             </h1>
             <p className="py-6">ANWESHA.... Your Daily Vlogs Here??</p>
             <button onClick={handleLogin} className="btn btn-primary">
-              Login with Google
+              Login Cutie
             </button>
           </div>
         </div>
